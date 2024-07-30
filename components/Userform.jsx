@@ -1,5 +1,7 @@
 import "./form.css"
 import {useForm} from "react-hook-form"
+import { Link } from "react-router-dom";
+import "./home.css"
 
 const Form = () => {
   const{register , handleSubmit} = useForm();
@@ -9,6 +11,14 @@ const Form = () => {
 
   return (
    <div>
+   <div className="btnbox">
+   <button type="button" className="btn btn-danger">
+    <Link to="/">Home</Link>
+    </button>
+    <button type="button" className="btn btn-warning">
+    <Link to="/users">AllUsers</Link>
+    </button>
+   </div>
        <form className="form" onSubmit={handleSubmit(submit)}>
   <input placeholder="Enter your name" className="input" type="text" {...register("name")}/>
   <input placeholder="Enter your email" className="input" type="text" {...register("email")}/>
@@ -17,6 +27,7 @@ const Form = () => {
 
   <button>Submit</button>
 </form>
+
    </div>
   )
 }

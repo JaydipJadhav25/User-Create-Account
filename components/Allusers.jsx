@@ -2,13 +2,14 @@ import { useEffect, useState } from "react"
 import {useSelector} from "react-redux"
 import { getUsers } from "../store/user"
 import { useDispatch } from "react-redux"
-import Card from "./Card"
+// import Card from "./Card"
+import { Link } from "react-router-dom"
 
 const Allusers = () => {
     const[user , setUser]  = useState(null)
     const {users , loading} = useSelector(state => state.users)
 
-    console.log("users : " , users)
+    console.log("users : " , users);
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -20,6 +21,14 @@ const Allusers = () => {
       }
   return (
     <div>
+      <div className="btnbox">
+   <button type="button" className="btn btn-danger">
+    <Link to="/">Home</Link>
+    </button>
+    <button type="button" className="btn btn-info">
+    <Link to="/info">info</Link>
+    </button>
+   </div>
         {
             users  && users.map((ele) =><div key={users.id} className="bg-warning flex">
                <div>

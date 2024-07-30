@@ -14,13 +14,13 @@ function App() {
     <>
     
       <BrowserRouter>
-          <Navbar/>
+          {/* <Navbar/> */}
       <Routes>
          <Route path="/" element={<Home/>}/>
          <Route path="/info" element={<Userform/>}/>
          <Route path="/users" element={<Allusers/>}/>
       </Routes>
-    <Footer/>
+    {/* <Footer/> */}
       </BrowserRouter>
   
       
