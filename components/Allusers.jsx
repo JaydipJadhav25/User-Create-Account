@@ -39,9 +39,9 @@ const Allusers = () => {
       {
             users  && users.map((ele) =><div key={users.id} className="bg-warning flex box2">
                <div>
-               <h1>{ele.name}</h1>
-                <p>{ele.email}</p>
-                <p>{ele.age}</p>
+               <h1>Name : {ele.name}</h1>
+                <p>Email : <b>{ele.email}</b></p>
+                <p>Age : <b>{ele.age}</b></p>
                </div>
 
             </div>)
