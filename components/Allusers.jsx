@@ -9,12 +9,12 @@ const Allusers = () => {
     // const[user , setUser]  = useState(null)
     const {users , loading} = useSelector(state => state.users)
 
-    console.log("users : " , users);
+  
 
     const dispatch = useDispatch();
     useEffect(()=>{
     dispatch(getUsers());
-    },[])
+    },[users , loading])
 
     if(loading) {
         return <h1> loading......</h1>
