@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect  } from "react"
 import {useSelector} from "react-redux"
 import { getUsers } from "../store/user"
 import { useDispatch } from "react-redux"
 // import Card from "./Card"
 import { Link } from "react-router-dom"
-
+import "./user.css"
 const Allusers = () => {
-    const[user , setUser]  = useState(null)
+    // const[user , setUser]  = useState(null)
     const {users , loading} = useSelector(state => state.users)
 
     console.log("users : " , users);
@@ -19,8 +19,13 @@ const Allusers = () => {
     if(loading) {
         return <h1> loading......</h1>
       }
+     
   return (
     <div>
+      {
+        users && users.length ===0 ? <h1>Empty!</h1> : null
+      }
+      
       <div className="btnbox">
    <button type="button" className="btn btn-danger">
     <Link to="/">Home</Link>
@@ -29,8 +34,10 @@ const Allusers = () => {
     <Link to="/info">info</Link>
     </button>
    </div>
-        {
-            users  && users.map((ele) =><div key={users.id} className="bg-warning flex">
+   <h1 className="">Total Users :{users && users.length} </h1>
+      <div className="box">
+      {
+            users  && users.map((ele) =><div key={users.id} className="bg-warning flex box2">
                <div>
                <h1>{ele.name}</h1>
                 <p>{ele.email}</p>
@@ -39,6 +46,7 @@ const Allusers = () => {
 
             </div>)
         }
+      </div>
     </div>
   )
 }

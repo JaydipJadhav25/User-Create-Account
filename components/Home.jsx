@@ -15,11 +15,11 @@ const Home = () => {
       </div>
     </div>
     <div className="btnbox">
-    <button type="button" className="btn btn-success"
+    <button type="button" className="btn btn-outline-success"
     >
       <Link to="/info">info</Link>
     </button>
-    <button type="button" className="btn btn-warning">
+    <button type="button" className="btn btn-outline-warning">
     <Link to="/users">AllUsers</Link>
       
     </button>

@@ -1,0 +1,10 @@
+/* .box{
+    background-color: chartreuse;
+} */
+.box2{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
