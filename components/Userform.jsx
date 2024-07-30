@@ -5,8 +5,9 @@ import "./home.css"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../store/user";
+import { useCallback, useEffect } from "react";
 const Form = () => {
-  const{register , handleSubmit} = useForm();
+  const{register , handleSubmit , watch , setValue} = useForm();
 const dispatch = useDispatch();
 const navigate = useNavigate();
   const submit = async(data)=>{
@@ -14,6 +15,32 @@ const navigate = useNavigate();
     dispatch(createUser(data));
      navigate("/users");
   }
+// to create slug
+  const slugTransform = useCallback((value) => {
+    if (value && typeof value === "string")
+        return value
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-zA-Z\d\s]+/g, "-")
+            .replace(/\s/g, "-");
+
+    return "";
+}, []);
+
+useEffect(() => {
+  const subscription = watch((value, { name }) => {
+    //check
+      if (name === "title") {
+        //setvalue slug
+          setValue("name", slugTransform(value.title), { shouldValidate: true });
+      } 
+  });
+
+  //disallocate value
+  return () => subscription.unsubscribe();
+}, [watch, slugTransform, setValue]);
+
+
 
   return (
    <div className="formbox">
@@ -36,7 +63,8 @@ const navigate = useNavigate();
 <div className="container" onSubmit={handleSubmit(submit)}>
         <form className="form" action="">
             <p className="title">Form</p>
-            <input placeholder="name" className="username input" type="text" {...register("name")}/>
+            <input placeholder="enter your name" className="username input" type="title" name="username" {...register("title")}/>
+            <input placeholder="Your name " className="username input" type="text" name="name" {...register("name")} readOnly/>
             <input placeholder="email" className="username input" type="text" {...register("email")}/>
             <input placeholder="Age" className="username input" type="text"{...register("age")}/>
             <button className="btn4" type="submit">Submit</button>
