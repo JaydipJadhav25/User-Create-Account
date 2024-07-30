@@ -14,7 +14,7 @@ const Allusers = () => {
     const dispatch = useDispatch();
     useEffect(()=>{
     dispatch(getUsers());
-    },[users , loading])
+    },[])
 
     if(loading) {
         return <h1> loading......</h1>
