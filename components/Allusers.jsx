@@ -27,14 +27,14 @@ const Allusers = () => {
         users && users.length ===0 ? <h1>Empty!</h1> : null
       }
       
-      <div className="btnbox">
+      {/* <div className="btnbox">
    <button type="button" className="btn btn-danger">
     <Link to="/">Home</Link>
     </button>
     <button type="button" className="btn btn-info">
     <Link to="/info">info</Link>
     </button>
-   </div>
+   </div> */}
    <h1 className="">Total Users :{users && users.length} </h1>
       <div className="container">
       {

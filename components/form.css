@@ -1,12 +1,9 @@
-::selection {
-  background-color: gray;
-}
 
-.container {
-  margin: 0 auto;
+
+.container1{
+  /* background-color: aqua; */
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .form {

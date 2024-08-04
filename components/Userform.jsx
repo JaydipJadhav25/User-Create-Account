@@ -50,14 +50,14 @@ useEffect(() => {
 
   return (
    <div className="formbox">
-   <div className="btnbox">
+   {/* <div className="btnbox">
    <button type="button" className="btn btn-danger">
     <Link to="/">Home</Link>
     </button>
     <button type="button" className="btn btn-warning">
     <Link to="/users">AllUsers</Link>
     </button>
-   </div>
+   </div> */}
        {/* <form classNameName="form" onSubmit={handleSubmit(submit)}>
   <input placeholder="Enter your name" classNameName="input" type="text" {...register("name")}/>
   <input placeholder="Enter your email" classNameName="input" type="text" {...register("email")}/>
@@ -66,7 +66,7 @@ useEffect(() => {
 
   <button>Submit</button> */}
 
-<div className="container" onSubmit={handleSubmit(submit)}>
+<div className="container1" onSubmit={handleSubmit(submit)}>
         <form className="form" action="">
             <p className="title">Form</p>
             <input placeholder="enter your name" className="username input" type="title" name="username" {...register("title")}/>
