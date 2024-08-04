@@ -7,9 +7,10 @@ import { Link } from "react-router-dom"
 import "./user.css"
 const Allusers = () => {
     // const[user , setUser]  = useState(null)
-    const {users , loading} = useSelector(state => state.users)
+    const {users , loading ,searchData } = useSelector(state => state.users)
 
-  
+   
+    console.log(  "searchData is : " ,  searchData);
 
     const dispatch = useDispatch();
     useEffect(()=>{
@@ -35,11 +36,31 @@ const Allusers = () => {
     </button>
    </div>
    <h1 className="">Total Users :{users && users.length} </h1>
-      <div className="box">
+      <div className="container">
       {
-            users  && users.map((ele) =><div key={users.id} className="bg-warning flex box2">
-               <div>
-               <h1>Name : {ele.name}</h1>
+        users && 
+        
+           users
+          //  .filter((ele) =>{
+          //   if(searchData.length === 0 ){
+          //     return ele;
+          //   }
+          //   else{
+          //     return ele.name.toLowerCase().includes(searchData.name.toLowerCase());
+          //   }
+          //  })
+          .filter((ele) =>{
+            if(searchData.length === 0){
+              return ele;
+            }
+            else{
+              return ele.name.toLowerCase().includes(searchData.toLowerCase());
+            }
+           })
+      
+        .map((ele) =><div key={users.id} className="container1">
+               <div className="card">
+                  <h2> {ele.name}</h2>
                 <p>Email : <b>{ele.email}</b></p>
                 <p>Age : <b>{ele.age}</b></p>
                </div>

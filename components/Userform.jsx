@@ -10,6 +10,11 @@ const Form = () => {
   const{register , handleSubmit , watch , setValue} = useForm();
 const dispatch = useDispatch();
 const navigate = useNavigate();
+
+
+
+
+
   const submit = async(data)=>{
     console.log(data);
     dispatch(createUser(data));
@@ -32,6 +37,7 @@ useEffect(() => {
     //check
       if (name === "title") {
         //setvalue slug
+        console.log("title is  : " , value.title)
           setValue("name", slugTransform(value.title), { shouldValidate: true });
       } 
   });

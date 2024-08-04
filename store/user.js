@@ -39,7 +39,8 @@ export const userSlice = createSlice({
     initialState : {
         loading : false,
         users : [],
-        error : false
+        error : false,
+        searchData :[],
     },
 
     extraReducers : (builder) =>{
@@ -68,10 +69,22 @@ export const userSlice = createSlice({
         builder.addCase(createUser.rejected , (state)=>{
             state.error = true;
         })
+    },
+
+    //readucer action
+
+    reducers : {
+        searchUser : (state , action) =>{
+            console.log("user search value : " , action.payload);
+
+            state.searchData  = action.payload;
+
+        } 
     }
     
     
 })
 
 // export const{} = userSlice.actions;
+export const  {searchUser} = userSlice.actions;
 export default userSlice.reducer;

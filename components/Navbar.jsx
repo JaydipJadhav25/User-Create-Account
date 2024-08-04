@@ -1,6 +1,46 @@
 import { Link} from "react-router-dom"
+import {useForm} from "react-hook-form"
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { searchUser  } from "../store/user";
+
 
 const Navbar = () => {
+  const {watch ,  register , handleSubmit} = useForm();
+
+  //  const[seachValue, setsearchValue ] = useState(null);
+
+const dispatch = useDispatch();
+
+
+
+
+   useEffect(()=>{
+    const subscription = watch((value, { name }) => {
+      //check
+        if (name === "title") {
+          //setvalue 
+            
+            // console.log(" value is : " , value.title)
+            // setsearchValue(value.title);
+            
+          dispatch(searchUser(value.title));
+        } 
+    });
+  
+    return () =>subscription.unsubscribe();
+
+   },[watch , register]);
+
+
+function submit(data){
+  // console.log("data is  : " , data);
+}
+
+// console.log("search value is : " , seachValue)
+
+
+
   return (
     <div>
          <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -23,23 +63,11 @@ const Navbar = () => {
         <Link className="nav-link"  to='/users'>All Users</Link>
 
         </li>
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">Action</a></li>
-            <li><a className="dropdown-item" href="#">Another action</a></li>
-            <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
+        
+        
       </ul>
-      <form className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form className="d-flex" role="search" onSubmit={handleSubmit(submit)}>
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="title" {...register("title")}/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
